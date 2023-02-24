@@ -88,9 +88,25 @@ let data = [
 ];
 const routes:Routes = [ 
   {
-path:'',
+path:'dashboard',
 loadChildren: () => import('../featured/dashboard/dashboard.module').then((m)=>m.DashboardModule),
 },
+{
+  path:'accident',
+  loadChildren: () => import('../featured/accident/accident.module').then((m)=>m.AccidentModule),
+  },
+{
+    path:'penalty',
+    loadChildren: () => import('../featured/penalty/penalty.module').then((m)=>m.PenaltyModule),
+    },
+  {
+      path:'violation',
+      loadChildren: () => import('../featured/violation/violation.module').then((m)=>m.ViolationModule),
+   },
+   {
+    path:'training',
+    loadChildren: () => import('../featured/training/training.module').then((m)=>m.TrainingModule),
+ },
   ...data.map(ele => ({
     path: ele.path + '/list',
     component: DynamicListComponent,
@@ -106,6 +122,7 @@ loadChildren: () => import('../featured/dashboard/dashboard.module').then((m)=>m
     // canActivate:[AuthGuard]
   
   })),
+
 ];
 
 @NgModule({
