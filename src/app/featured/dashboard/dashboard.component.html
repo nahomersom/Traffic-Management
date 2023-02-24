@@ -1,1 +1,162 @@
-<p>dashboard works!</p>
+<div>
+  <section id="smallcards">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-2 row-cols-xxl-4">
+      <div class="col">
+        <div
+          class="border rounded-lg h-full d-flex gap-3 align-items-center shadow-md"
+        >
+          <div class="me-auto px-3">
+            <p class="mb-0 text-dark">Total Drivers</p>
+            <h4 class="my-1 text-secondary-text-color">8.4K</h4>
+          </div>
+          <div>
+            <span class="material-icons text-6xl text-secondary-text-color"
+              >personal_injury</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div
+          class="border rounded-lg h-full d-flex gap-3 align-items-center shadow-md"
+        >
+          <div class="me-auto px-3">
+            <p class="mb-0 text-dark">Total Vehicles</p>
+            <h4 class="my-1 text-secondary-text-color">8.4K</h4>
+          </div>
+          <div>
+            <span class="material-icons text-6xl text-secondary-text-color"
+              >directions_car</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div
+          class="border rounded-lg h-full d-flex gap-3 align-items-center shadow-md"
+        >
+          <div class="me-auto px-3">
+            <p class="mb-0 text-dark">Total Traffic Officers</p>
+            <h4 class="my-1 text-secondary-text-color">8.4K</h4>
+          </div>
+          <div>
+            <span class="text-6xl text-secondary-text-color"
+              ><i class="fa fa-user-secret"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card radius-10 h-12 shadow-md">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="me-auto">
+                <p class="mb-0 text-dark">Total Trainings</p>
+                <h4 class="my-1 text-secondary-text-color">8.4K</h4>
+              </div>
+              <div>
+                <span class="material-icons text-6xl text-secondary-text-color"
+                  >run_circle</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="mediumCards" class="my-8">
+    <div class="row mb-3">
+      <div class="col-6"></div>
+      <div class="col-6">
+        <div class="d-flex justify-end gap-4">
+          <ejs-dropdownlist placeholder="from"></ejs-dropdownlist>
+          <ejs-dropdownlist placeholder="to"></ejs-dropdownlist>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="border rounded-lg d-flex gap-3 align-items-center">
+          <div class="me-auto px-3 w-full">
+            <h4 class="mt-3 text-secondary-text-color">Accidents</h4>
+            <hr />
+            <div class="flex justify-between">
+              <p class="mb-0 text-dark">Total Accident</p>
+              <p class="text-light-text-color">23</p>
+            </div>
+            <hr />
+            <div class="flex justify-between">
+              <p class="mb-0 text-dark">Life Lost</p>
+              <p class="text-light-text-color">5</p>
+            </div>
+            <hr />
+            <div class="flex justify-between">
+              <p class="mb-0 text-dark">Major Physical Injuries</p>
+              <p class="text-light-text-color">29</p>
+            </div>
+            <hr />
+            <div class="flex justify-between">
+              <p class="mb-0 text-dark">Minor Physical Injuries</p>
+              <p class="text-light-text-color">53</p>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div
+          class="border rounded-lg d-flex gap-3 align-items-center justify-center"
+        >
+          <div class="w-full">
+            <h4 class="mt-3 text-secondary-text-color px-6">Penalities</h4>
+            <hr />
+            <div class="d-flex">
+              <ejs-accumulationchart
+                id="donut-container"
+                #pie
+                style="display: block; width: 92%"
+                [legendSettings]="legendSettings"
+                selectionMode="Point"
+              >
+                <e-accumulation-series-collection>
+                  <e-accumulation-series
+                    name="Revenue"
+                    [dataSource]="data"
+                    xName="x"
+                    yName="y"
+                    innerRadius="40%"
+                    [dataLabel]="dataLabel"
+                    [palettes]="palette"
+                  >
+                  </e-accumulation-series>
+                </e-accumulation-series-collection>
+              </ejs-accumulationchart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="largeCard">
+    <div class="row">
+      <div class="col-12">
+        <div class="border rounded-lg">
+          <div class="p-11">
+            <ejs-chart id="chart-container" [primaryXAxis]="primaryXAxis">
+              <e-series-collection>
+                <e-series
+                  [dataSource]="chartData"
+                  type="Line"
+                  xName="zone"
+                  yName="accident"
+                  name="Accident By Zone"
+                ></e-series>
+              </e-series-collection>
+            </ejs-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
