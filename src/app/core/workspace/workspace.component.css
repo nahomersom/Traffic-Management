@@ -39,6 +39,8 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 4%;
+    gap: 10px;
+  
   
   }
   

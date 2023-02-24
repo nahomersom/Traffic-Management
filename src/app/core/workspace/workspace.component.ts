@@ -8,7 +8,7 @@ import { sideBarMenus } from './side-bar-menus';
   templateUrl: './workspace.component.html',
   styleUrls: ['./workspace.component.css']
 })
-export class WorkspaceComponent implements OnInit {
+export class WorkspaceComponent{
   
   public getScreenWidth: any;
   public getScreenHeight: any;
@@ -17,10 +17,8 @@ export class WorkspaceComponent implements OnInit {
       this.getScreenWidth = window.innerWidth;
       this.getScreenHeight = window.innerHeight;
 
-  }ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
-;
+
   @ViewChild('sidebarTreeviewInstance')
   public sidebarTreeviewInstance!: SidebarComponent;
   @ViewChild('treeviewInstance')

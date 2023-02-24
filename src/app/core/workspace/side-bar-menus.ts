@@ -2,7 +2,7 @@
 
 export var sideBarMenus =  [
     {
-        nodeId: '01', nodeText: 'Dashboard', iconCss: 'fa fa-tachometer',url:'',
+        nodeId: '01', nodeText: 'Dashboard', iconCss: 'fa fa-tachometer',url:'dashboard',
     },
     {
         nodeId: '02', nodeText: 'Driver', iconCss:'fa fa-id-card-o',
@@ -28,18 +28,18 @@ export var sideBarMenus =  [
 
     },
     {
-        nodeId: '05', nodeText: 'Accident', iconCss: 'fa fa-free-code-camp',url:'accident/list'
+        nodeId: '05', nodeText: 'Accident', iconCss: 'fa fa-free-code-camp',url:'accident'
     },
     {
         nodeId: '06', nodeText: 'Penalty', iconCss: 'fa fa-hand-lizard-o' , url:'penalty/list',
         nodeChild:[
             {nodeId:'06-01',nodeText:'Violation' ,  url:'violation/list'},
-            {nodeId:'06-02',nodeText:'Penalty', url:'penalty/list'},
+            {nodeId:'06-02',nodeText:'Penalty', url:'penalty'},
             {nodeId:'06-03',nodeText:'Settlement', url:'penalty-settlement/list'},
         ]
     },
     {
-        nodeId: '07', nodeText: 'Training', iconCss: 'fa fa-steam' , url:'training/list'
+        nodeId: '07', nodeText: 'Training', iconCss: 'fa fa-steam' , url:'training'
     },
     {
         nodeId: '08', nodeText: 'Reports', iconCss: 'fa fa-sticky-note-o' ,
