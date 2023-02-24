@@ -11,10 +11,63 @@
 @import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
 @import '../node_modules/@syncfusion/ej2-angular-grids/styles/material.css';
 @import 'material-icons/iconfont/material-icons.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: "Exo";
+    src: local("Exo_2"),
+      url(./assets/fonts/Exo_2/static/Exo2-Bold.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: "JosefinRegular";
+    src: local("Josefin_Sans"),
+      url(./assets/fonts/Josefin_Sans/static/JosefinSans-Regular.ttf)
+        format("truetype");
+  }
+  
+  @font-face {
+    font-family: "JosefinBold";
+    src: local("Josefin_Sans"),
+      url(./assets/fonts/Josefin_Sans/static/JosefinSans-Bold.ttf)
+        format("truetype");
+  }
+  
+  @font-face {
+    font-family: "KanitMedium";
+    src: local("Kanit"),
+      url(./assets/fonts/Kanit/Kanit-Medium.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: "KanitBold";
+    src: local("Kanit"),
+      url(./assets/fonts/Kanit/Kanit-Bold.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: "UbuntuRegular";
+    src: local("Kanit"),
+      url(./assets/fonts/Ubuntu/Ubuntu-Regular.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: "UbuntuMedium";
+    src: local("Kanit"),
+      url(./assets/fonts/Ubuntu/Ubuntu-Medium.ttf) format("truetype");
+  }
+  
+  @font-face {
+    font-family: "UbuntuBold";
+    src: local("Kanit"),
+      url(./assets/fonts/Ubuntu/Ubuntu-Bold.ttf) format("truetype");
+  }
 body{
     padding: 0px;
     margin: 0px;
     height: 100%;
+    background-color: #F7F7FF;
 }
 .e-sidebar{
     width: 230px !important;
