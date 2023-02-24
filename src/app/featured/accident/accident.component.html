@@ -1,0 +1,70 @@
+<div [ngClass]="!isModal ? 'card mt-4' : null">
+  <div class="card-content p-3">
+    <app-form-header title="Port Information"></app-form-header>
+    <form [formGroup]="PortForm">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+          <label class="mb-2 mt-2 label">Port Number</label>
+          <ejs-textbox
+            cssClass="e-outline"
+            formControlName="portNumber"
+            id="portNumber"
+          ></ejs-textbox>
+          <app-common-error-display
+            *ngIf="formSubmitted"
+            [error]="PortForm.get('portNumber')"
+          >
+          </app-common-error-display>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-2">
+          <label class="mb-2 label">Country</label>
+          <ejs-dropdownlist
+            cssClass="e-outline"
+            id="vountry"
+            allowFiltering="true"
+            [dataSource]="data"
+            [fields]="fields"
+            formControlName="country"
+          ></ejs-dropdownlist>
+          <app-common-error-display
+            *ngIf="formSubmitted"
+            [error]="PortForm.get('country')"
+          >
+          </app-common-error-display>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-2">
+          <label class="mb-2 label" id="vegion">Region</label>
+          <ejs-dropdownlist
+            cssClass="e-outline"
+            formControlName="region"
+            [fields]="Regionfields"
+            id="region"
+            formControlName="region"
+          ></ejs-dropdownlist>
+          <app-common-error-display
+            *ngIf="formSubmitted"
+            [error]="PortForm.get('region')"
+          >
+          </app-common-error-display>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mt-2">
+          <label class="mb-2 label" id="vollume">Volume</label>
+          <ejs-textbox
+            cssClass="e-outline"
+            formControlName="vollume"
+          ></ejs-textbox>
+          <app-common-error-display
+            *ngIf="formSubmitted"
+            [error]="PortForm.get('vollume')"
+          >
+          </app-common-error-display>
+        </div>
+      </div>
+      <app-form-buttons
+        [isModal]="isModal ? true : false"
+        (submit)="onSubmit()"
+        (cancel)="onCancel()"
+      ></app-form-buttons>
+    </form>
+  </div>
+</div>
