@@ -1,0 +1,15 @@
+<span class="text-danger" *ngIf="error?.hasError('required')"
+  >**required**
+</span>
+<span class="text-danger" *ngIf="error?.hasError('email')"
+  >**invalid email**
+</span>
+<span class="text-danger" *ngIf="error?.hasError('minlength')"
+  >**invalid length**
+</span>
+<span class="text-danger" *ngIf="error?.hasError('maxlength')"
+  >**invalid length**
+</span>
+<span class="text-danger" *ngIf="error?.hasError('pattern')"
+  >**invalid phone number**
+</span>

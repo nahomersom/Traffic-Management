@@ -1,0 +1,29 @@
+<div class="d-flex mt-3">
+  <div *ngIf="Submitbtn">
+    <button ejs-button cssClass="e-info" class="mr-3" (click)="onClick()">
+      <span>{{ submitTex }}</span>
+
+      <ng-template #spinnerIcon
+        ><i class="fa fa-spinner fa-spin fa-fw"></i
+      ></ng-template>
+    </button>
+  </div>
+  <div *ngIf="Canclebtn">
+    <span><i class="fa fa-spin"></i></span>
+    <button ejs-button cssClass="e-danger" (click)="onCancel()">
+      {{ CancleTex }}
+    </button>
+  </div>
+  <div *ngIf="Deletebtn">
+    <span><i class="fa fa-spin"></i></span>
+    <button ejs-button cssClass="e-danger" (click)="onDelete()">
+      {{ DeleteTex }}
+    </button>
+  </div>
+  <div *ngIf="localSave">
+    <span><i class="fa fa-spin"></i></span>
+    <button ejs-button cssClass="e-danger" (click)="onSave()">
+      {{ localSaveText }}
+    </button>
+  </div>
+</div>
