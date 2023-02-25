@@ -1,71 +1,194 @@
-<div [ngClass]="!isModal ? 'card mt-4' : null">
-  <div class="card-content p-3">
-    <app-form-header title="General"></app-form-header>
-    <form [formGroup]="AccidentForm">
-      <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
-          <label class="mb-2 mt-2 label">Date</label>
-          <ejs-datepicker
-            cssClass="e-outline"
-            id="date"
-            formControlName="date"
-          ></ejs-datepicker>
-          <app-common-error-display
-            *ngIf="formSubmitted"
-            [error]="AccidentForm.get('date')"
-          >
-          </app-common-error-display>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 mt-2">
-          <label class="mb-2 label">Accident Type</label>
-          <ejs-dropdownlist
-            cssClass="e-outline"
-            id="accidentType"
-            [dataSource]="this.crudService.dropDownData['accidentType']"
-            [fields]="lookupField"
-            formControlName="accidentType"
-            cssClass="e-outline"
-          ></ejs-dropdownlist>
-          <app-common-error-display
-            *ngIf="formSubmitted"
-            [error]="AccidentForm.get('accidentType')"
-          >
-          </app-common-error-display>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 mt-2">
-          <label class="mb-2 label" id="vegion">Reported By</label>
-          <ejs-dropdownlist
-            cssClass="e-outline"
-            formControlName="reportedBy"
-            [fields]="Regionfields"
-            id="reportedBy"
-            formControlName="reportedBy"
-          ></ejs-dropdownlist>
-          <app-common-error-display
-            *ngIf="formSubmitted"
-            [error]="AccidentForm.get('reportedBy')"
-          >
-          </app-common-error-display>
-        </div>
-        <app-form-header title="Address"></app-form-header>
-        <div class="col-12 col-md-6 col-lg-4 mt-2">
-          <label class="mb-2 label" id="vollume">Volume</label>
-          <ejs-textbox
-            cssClass="e-outline"
-            formControlName="vollume"
-          ></ejs-textbox>
-          <app-common-error-display
-            *ngIf="formSubmitted"
-            [error]="AccidentForm.get('vollume')"
-          >
-          </app-common-error-display>
-        </div>
+<div class="card-content p-3">
+  <app-form-header title="General"></app-form-header>
+  <form [formGroup]="accidentForm">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <label class="mb-2 mt-2 label">Date</label>
+        <ejs-datepicker
+          cssClass="e-outline"
+          id="date"
+          formControlName="date"
+        ></ejs-datepicker>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('date')"
+        >
+        </app-common-error-display>
       </div>
-      <app-form-buttons
-        [isModal]="isModal ? true : false"
-        (submit)="onSubmit()"
-        (cancel)="onCancel()"
-      ></app-form-buttons>
-    </form>
-  </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-2">
+        <label class="mb-2 label">Accident Type</label>
+        <ejs-dropdownlist
+          cssClass="e-outline"
+          id="accidentType"
+          [dataSource]="this.crudService.dropDownData['accidentType']"
+          [fields]="lookupField"
+          formControlName="accidentType"
+          cssClass="e-outline"
+        ></ejs-dropdownlist>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('accidentType')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-2">
+        <label class="mb-2 label" id="vegion">Reported By</label>
+        <ejs-dropdownlist
+          cssClass="e-outline"
+          formControlName="reportedBy"
+          [fields]="Regionfields"
+          id="reportedBy"
+        ></ejs-dropdownlist>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('reportedBy')"
+        >
+        </app-common-error-display>
+      </div>
+      <app-form-header title="Accident" class="mt-2"></app-form-header>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Number of Loos of Life</label>
+        <ejs-numerictextbox
+          cssClass="e-outline"
+          min="0"
+          formControlName="numberOfLossOfLife"
+          id="numberOfLossOfLife"
+        ></ejs-numerictextbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('numberOfLossOfLife')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Number Of Minor Injury</label>
+        <ejs-numerictextbox
+          cssClass="e-outline"
+          min="0"
+          formControlName="numberOfMinorInjury"
+          id="numberOfMinorInjury"
+        ></ejs-numerictextbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('numberOfMinorInjury')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Number Of Major Injury</label>
+        <ejs-numerictextbox
+          cssClass="e-outline"
+          min="0"
+          formControlName="numberOfMajorInjury"
+          id="numberOfMajorInjury"
+        ></ejs-numerictextbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('numberOfMajorInjury')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Number Of Loss Of Property</label>
+        <ejs-numerictextbox
+          cssClass="e-outline"
+          min="0"
+          formControlName="numberOfLossOfProperty"
+          id="numberOfLossOfProperty"
+        ></ejs-numerictextbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('numberOfLossOfProperty')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Loss Of Loss Of In Money</label>
+        <ejs-numerictextbox
+          cssClass="e-outline"
+          min="0"
+          id="lossOfPropertyInMoney"
+          formControlName="lossOfPropertyInMoney"
+        ></ejs-numerictextbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('lossOfPropertyInMoney')"
+        >
+        </app-common-error-display>
+      </div>
+      <app-form-header title="Address" class="mt-2"></app-form-header>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Region</label>
+        <ejs-dropdownlist
+          cssClass="e-outline"
+          [dataSource]="this.crudService.dropDownData['region']"
+          [fields]="fields"
+          id="address.region"
+          formControlName="region"
+        ></ejs-dropdownlist>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('address.region')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">House Number</label>
+        <ejs-textbox
+          cssClass="e-outline"
+          id="address.houseNumber"
+          formControlName="houseNumber"
+        ></ejs-textbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('address.houseNumber')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Specific Address</label>
+        <ejs-textbox
+          cssClass="e-outline"
+          id="address.specificAddress"
+          formControlName="specificAddress"
+        ></ejs-textbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('address.specificAddress')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Longitude</label>
+        <ejs-textbox
+          cssClass="e-outline"
+          id="address.longitude"
+          formControlName="longitude"
+        ></ejs-textbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('address.longitude')"
+        >
+        </app-common-error-display>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
+        <label class="mb-2 label">Latitude</label>
+        <ejs-textbox
+          cssClass="e-outline"
+          id="address.latitude"
+          formControlName="latitude"
+        ></ejs-textbox>
+        <app-common-error-display
+          *ngIf="formSubmitted"
+          [error]="accidentForm.get('address.latitude')"
+        >
+        </app-common-error-display>
+      </div>
+    </div>
+    <app-form-buttons
+      [isModal]="isModal ? true : false"
+      (submit)="onSubmit()"
+      (cancel)="onCancel()"
+    ></app-form-buttons>
+  </form>
 </div>

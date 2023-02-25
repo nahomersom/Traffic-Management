@@ -12,7 +12,7 @@ import { HelpersService } from 'src/app/core/services/helpers.service';
 export class AccidentComponent implements OnInit {
 
   id: number;
-  AccidentForm: FormGroup;
+  accidentForm: FormGroup;
   formSubmitted: boolean = false;
   @Input() isModal:boolean = false;
   @Output() onCancelModal = new EventEmitter();
@@ -30,12 +30,27 @@ export class AccidentComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.AccidentForm = fb.group({
-      portNumber: ['', Validators.required],
-      _country: ['', Validators.required],
-      region: ['', Validators.required],
-      vollume: ['', Validators.required],
-    });
+    this.accidentForm = fb.group({
+      trafficOfficerId: ['', Validators.required],
+      typeLookupId: ['', Validators.required],
+      date: ['', Validators.required],
+      numberOfLossOfLife: ['', Validators.required],
+      numberOfMinorInjury: ['', Validators.required],
+      numberOfMajorInjury: ['', Validators.required],
+      numberOfLossOfProperty: ['', Validators.required],
+      lossOfPropertyInMoney: ['', Validators.required],
+      descriptionObj: ['', Validators.required],
+      address:fb.group({
+        specificAddress:['',Validators.required],
+        regionAddressId:['', Validators.required],
+        houseNumber:['', Validators.required],
+        longitude:['', Validators.required],
+        latitude:['', Validators.required],
+      
+      },
+      )
+  });
+    
   }
 
   ngOnInit(): void {
@@ -58,15 +73,15 @@ export class AccidentComponent implements OnInit {
     //     value: ele.Code,
     //   });
     // });
-    // this.crudService.loadDropDownData('lookup/region', 'region');
+    this.crudService.loadDropDownData('lookup/region', 'region');
   }
   get State(): FormControl {
-    return this.AccidentForm.get('state') as FormControl;
+    return this.accidentForm.get('state') as FormControl;
   }
 
   onPortCreated(){
     this.onSubmitModal.emit();
-    this.AccidentForm.reset()
+    this.accidentForm.reset()
   }
   
   onCancel(){
