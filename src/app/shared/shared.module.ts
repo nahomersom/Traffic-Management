@@ -23,9 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     CommonModule,
     ButtonModule,
-    ToastrModule.forRoot({
-      positionClass:'toast-bottom-right'
-    }),
+
   ],
   exports:[
     ReactiveFormsModule,

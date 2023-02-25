@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ApiService {
   private api_url = environment.api_url;
   public buttonSending = new BehaviorSubject<boolean>(false);
 
-  constructor(public http:HttpClient) { }
+  constructor(public http:HttpClient,public toast:ToastrService) { }
 
   get(endpoint:string,params?:any):Observable<any>{
     return this.http.get(this.api_url + endpoint,{params: params}).pipe(
@@ -60,30 +60,30 @@ export class ApiService {
 
     let errorMessage = error.error?.Message ?? error.error?.message;
       
-    // switch(error.status){
+    switch(error.status){
         
-    //     case 400:{
-    //       // return this.toast.error(`Bad Request :${errorMessage}`,error.status.toString())
-    //     }
-    //     case 401:{
-    //       // return this.toast.error(`Unauthorized :${errorMessage}`,error.status.toString())
-    //     }
-    //     case 403:{
-    //       // return this.toast.error(`Access Denied :${errorMessage}`,error.status.toString())
-    //     }
-    //     case 405:{
-    //       // return this.toast.error(`Method Not Allowed`,error.status.toString())
-    //     }
-    //     case 500:{
-    //       // return this.toast.error(`Internal Server Error`,error.status.toString())
-    //     }
-    //     case 404:{
-    //       // return this.toast.error(`Page Not Found :${errorMessage}`,error.status.toString())
-    //     }
-    //    default:{
-    //     // return this.toast.error('Unknown Error');
-    //    }
-    //   }
+        case 400:{
+          return this.toast.error(`Bad Request :${errorMessage}`,error.status.toString())
+        }
+        case 401:{
+          return this.toast.error(`Unauthorized :${errorMessage}`,error.status.toString())
+        }
+        case 403:{
+          return this.toast.error(`Access Denied :${errorMessage}`,error.status.toString())
+        }
+        case 405:{
+          return this.toast.error(`Method Not Allowed`,error.status.toString())
+        }
+        case 500:{
+          return this.toast.error(`Internal Server Error`,error.status.toString())
+        }
+        case 404:{
+          return this.toast.error(`Page Not Found :${errorMessage}`,error.status.toString())
+        }
+       default:{
+        return this.toast.error('Unknown Error');
+       }
+      }
     }
   
 

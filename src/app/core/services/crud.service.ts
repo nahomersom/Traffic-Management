@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { DynamicListComponent } from 'src/app/featured/dynamic-list/dynamic-list.component';
 import { ApiService } from './api.service';
@@ -13,12 +13,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CrudService extends ApiService{
   dropDownData = {};
 
-  constructor(  http: HttpClient, 
+  constructor(  http: HttpClient, toastr: ToastrService,
     private router:Router,
     private location: Location, 
     private _sanitize:DomSanitizer
     ) {
-    super(http)
+    super(http,toastr)
   }
 
 
@@ -36,12 +36,12 @@ export class CrudService extends ApiService{
           this.buttonSending.next(false);
           
           if(res.status){
-              // this.toast.success(res.message,'Success')
+              this.toast.success(res.message,'Success')
          
                 !isModal ? this.location.back() : hasNoGrid ? this.router.navigateByUrl('') : callback();
               
           }else{
-                // this.toast.info(res.message,'Info')
+                this.toast.info(res.message,'Info')
                 !isModal ? this.location.back() :  hasNoGrid ? this.router.navigateByUrl('') :callback();
           }
           
@@ -56,11 +56,11 @@ export class CrudService extends ApiService{
           this.buttonSending.next(false);
           if(res.status){
         
-              // this.toast.success(res.message,'Success')
+              this.toast.success(res.message,'Success')
               !isModal ? this.location.back() : hasNoGrid ? this.router.navigateByUrl('') : callback();
             
           }else{
-                // this.toast.info(res.message,'Info')
+                this.toast.info(res.message,'Info')
                 !isModal ? this.location.back() :  hasNoGrid ? this.router.navigateByUrl('') :callback();
           }
           
@@ -80,7 +80,7 @@ export class CrudService extends ApiService{
         if (res) {
          
           com.feedGrid(com.dataApiUrl);
-          // this.toast.success(res.message, 'Success');
+          this.toast.success(res.message, 'Success');
           com.ejDialog.hide();
 
         } 
