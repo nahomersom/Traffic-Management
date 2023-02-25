@@ -45,8 +45,11 @@ export var sideBarMenus =  [
         nodeId: '08', nodeText: 'Reports', iconCss: 'fa fa-sticky-note-o' ,
         nodeChild:[
             {nodeId:'08-01',nodeText:'Traffic Accident', url:'reports/traffic-accident/list'},
-            {nodeId:'08-02',nodeText:'Financial', url:'reports/financial/list'},
+            {nodeId:'08-02',nodeText:'Penalty', url:'reports/penalty/list'},
             {nodeId:'08-03',nodeText:'Training', url:'reports/training/list'},
+          
+            {nodeId:'08-05',nodeText:'Traffic Officer', url:'reports/reports/traffic-officer'},
+            {nodeId:'08-06',nodeText:'Driver', url:'reports/driver'},
         ]
     },    
     {

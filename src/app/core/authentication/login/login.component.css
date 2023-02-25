@@ -1,0 +1,104 @@
+
+.wrapper{
+
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flexbox;
+    position: fixed;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.row{
+    height: 100%;
+}
+.logo-cont{
+    background-color: #163047;
+    display: flex;
+    align-content: center;
+    justify-content: right;
+    padding:0
+}
+img{
+    align-self:center;
+    justify-self: stretch;
+}
+
+.form-cont{
+padding: 20px;
+padding-top: 4%;
+display: flexbox;
+justify-content: center;
+background-color: rgb(226, 226, 226);
+
+}
+.login-title{
+    text-align: center;
+    font-weight:500;
+}
+.login-title-text{
+    font-size: 24px;
+}
+
+.login-form{
+padding-left: 20%;
+margin-top: 20px;
+width: 80%;
+
+}
+.inputGroup{
+padding-top: 20px;
+width: 100%;
+font-weight: 400;
+
+}
+.inputGroup input{
+    border: solid 1px gray;
+    padding: 8px;
+    width: 100%;
+    border-radius: 6px;
+}
+.inputGroup input:focus{
+    box-shadow: none;
+    outline:  1px solid #3EA1EC ;
+
+}
+.remember{
+    margin-top: 5px;
+}
+.remember-text{
+    padding-left: 5px;
+    font-size: 13px;
+}
+
+
+.error{
+    color: red;
+}
+.btn-cont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 23px;
+}
+
+.login-btn{
+    background-color: #021830;
+    color:white;
+    padding:10px 40px;
+    
+}
+.login-btn:hover{
+    opacity: 0.9;
+}
+
+.forgot-pass{
+    margin-bottom: 30px;
+    text-align: right;
+}
+.forgot-pass a{
+    color:#2a5275;
+    font-size: 14px;
+    text-decoration: none;
+}

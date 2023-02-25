@@ -7,11 +7,13 @@ import { ButtonModule, CheckBoxAllModule } from '@syncfusion/ej2-angular-buttons
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { AccumulationChartModule, AccumulationLegendService, CategoryService, DataLabelService, LegendService, LineSeriesService, PieSeriesService, TooltipService } from '@syncfusion/ej2-angular-charts';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
-import { NumericTextBoxModule, TextBoxModule, UploaderModule } from '@syncfusion/ej2-angular-inputs';
+import {  TextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
 import { FormHeaderComponent } from './form-header/form-header.component';
 import { FormButtonsComponent } from './form-buttons/form-buttons.component';
 import { CommonErrorDisplayComponent } from './common-error-display/common-error-display.component';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     FormHeaderComponent,
@@ -20,7 +22,10 @@ import { CommonErrorDisplayComponent } from './common-error-display/common-error
   ],
   imports: [
     CommonModule,
-    ButtonModule
+    ButtonModule,
+    ToastrModule.forRoot({
+      positionClass:'toast-bottom-right'
+    }),
   ],
   exports:[
     ReactiveFormsModule,
@@ -40,7 +45,8 @@ import { CommonErrorDisplayComponent } from './common-error-display/common-error
     DropDownListModule,
     ChartModule,
     FormButtonsComponent,
-    FormHeaderComponent
+    FormHeaderComponent,
+    ToastrModule,
 
   ],
   providers: [LegendService,PieSeriesService, AccumulationLegendService,CategoryService,TooltipService, DataLabelService, LineSeriesService]

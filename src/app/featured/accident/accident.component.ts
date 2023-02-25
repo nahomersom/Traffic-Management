@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CrudService } from 'src/app/core/services/crud.service';
+import { HelpersService } from 'src/app/core/services/helpers.service';
 
 @Component({
   selector: 'app-accident',
@@ -10,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AccidentComponent implements OnInit {
 
   id: number;
-  PortForm: FormGroup;
+  AccidentForm: FormGroup;
   formSubmitted: boolean = false;
   @Input() isModal:boolean = false;
   @Output() onCancelModal = new EventEmitter();
@@ -18,15 +20,17 @@ export class AccidentComponent implements OnInit {
   public fields: Object = { text: 'text', iconCss: 'Class', value: 'value' };
   public Regionfields: Object = { text: 'value', value: 'value' };
   data: {}[] = [];
+  public lookupField: Object = { text: 'value',value:'value'}
   isSending:boolean = false;
   constructor(
 
     private fb: FormBuilder,
-
+    public crudService:CrudService,
+    public helpersService:HelpersService,
     private activatedRoute: ActivatedRoute
   ) {
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.PortForm = fb.group({
+    this.AccidentForm = fb.group({
       portNumber: ['', Validators.required],
       _country: ['', Validators.required],
       region: ['', Validators.required],
@@ -41,7 +45,7 @@ export class AccidentComponent implements OnInit {
       // this.crudService.get(`Port/${this.id}`).subscribe((res) => {
       //   res.state = !!res.state;
       //   this.isSending = false;
-      //   this.PortForm.patchValue(res);
+      //   this.AccidentForm.patchValue(res);
       // },
       // (error)=>{this.isSending = false}
       // )
@@ -57,28 +61,28 @@ export class AccidentComponent implements OnInit {
     // this.crudService.loadDropDownData('lookup/region', 'region');
   }
   get State(): FormControl {
-    return this.PortForm.get('state') as FormControl;
+    return this.AccidentForm.get('state') as FormControl;
   }
 
   onPortCreated(){
     this.onSubmitModal.emit();
-    this.PortForm.reset()
+    this.AccidentForm.reset()
   }
   
   onCancel(){
     this.onCancelModal.emit();
   }
   onSubmit() {
-  //   if (this.PortForm.valid) {
+  //   if (this.AccidentForm.valid) {
   //     this.formSubmitted = true;
-  //     !this.id ? this.PortForm.removeControl('id') : null;
+  //     !this.id ? this.AccidentForm.removeControl('id') : null;
   //     this.crudService.submit(
-  //       { endpoint: this.id ? 'Port' : 'Port', payload: this.PortForm.value ,isModal:this.isModal},
+  //       { endpoint: this.id ? 'Port' : 'Port', payload: this.AccidentForm.value ,isModal:this.isModal},
   //       this.id ?? null,false,this.onPortCreated.bind(this)
   //     );
   //   } else {
   //     this.formSubmitted = true;
-  //     this.helpersService.scrollToTheError(this.PortForm);
+  //     this.helpersService.scrollToTheError(this.AccidentForm);
   //   }
   // }
     

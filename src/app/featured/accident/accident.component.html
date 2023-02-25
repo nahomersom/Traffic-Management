@@ -1,52 +1,53 @@
 <div [ngClass]="!isModal ? 'card mt-4' : null">
   <div class="card-content p-3">
-    <app-form-header title="Port Information"></app-form-header>
-    <form [formGroup]="PortForm">
+    <app-form-header title="General"></app-form-header>
+    <form [formGroup]="AccidentForm">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-4">
-          <label class="mb-2 mt-2 label">Port Number</label>
-          <ejs-textbox
+          <label class="mb-2 mt-2 label">Date</label>
+          <ejs-datepicker
             cssClass="e-outline"
-            formControlName="portNumber"
-            id="portNumber"
-          ></ejs-textbox>
+            id="date"
+            formControlName="date"
+          ></ejs-datepicker>
           <app-common-error-display
             *ngIf="formSubmitted"
-            [error]="PortForm.get('portNumber')"
+            [error]="AccidentForm.get('date')"
           >
           </app-common-error-display>
         </div>
         <div class="col-12 col-md-6 col-lg-4 mt-2">
-          <label class="mb-2 label">Country</label>
+          <label class="mb-2 label">Accident Type</label>
           <ejs-dropdownlist
             cssClass="e-outline"
-            id="vountry"
-            allowFiltering="true"
-            [dataSource]="data"
-            [fields]="fields"
-            formControlName="country"
+            id="accidentType"
+            [dataSource]="this.crudService.dropDownData['accidentType']"
+            [fields]="lookupField"
+            formControlName="accidentType"
+            cssClass="e-outline"
           ></ejs-dropdownlist>
           <app-common-error-display
             *ngIf="formSubmitted"
-            [error]="PortForm.get('country')"
+            [error]="AccidentForm.get('accidentType')"
           >
           </app-common-error-display>
         </div>
         <div class="col-12 col-md-6 col-lg-4 mt-2">
-          <label class="mb-2 label" id="vegion">Region</label>
+          <label class="mb-2 label" id="vegion">Reported By</label>
           <ejs-dropdownlist
             cssClass="e-outline"
-            formControlName="region"
+            formControlName="reportedBy"
             [fields]="Regionfields"
-            id="region"
-            formControlName="region"
+            id="reportedBy"
+            formControlName="reportedBy"
           ></ejs-dropdownlist>
           <app-common-error-display
             *ngIf="formSubmitted"
-            [error]="PortForm.get('region')"
+            [error]="AccidentForm.get('reportedBy')"
           >
           </app-common-error-display>
         </div>
+        <app-form-header title="Address"></app-form-header>
         <div class="col-12 col-md-6 col-lg-4 mt-2">
           <label class="mb-2 label" id="vollume">Volume</label>
           <ejs-textbox
@@ -55,7 +56,7 @@
           ></ejs-textbox>
           <app-common-error-display
             *ngIf="formSubmitted"
-            [error]="PortForm.get('vollume')"
+            [error]="AccidentForm.get('vollume')"
           >
           </app-common-error-display>
         </div>

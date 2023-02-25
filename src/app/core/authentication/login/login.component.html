@@ -1,0 +1,59 @@
+<div class=" container-fluid wrapper">
+    <div class="row">
+
+        <div class="col-12 col-md-6 col-lg-6 logo-cont">
+            <img src="../../../../assets/images/ghionLogoWithBg.jpg" alt="">
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-6 form-cont">
+            
+           <div class=" login-title">
+              <i class="fa fa-user fa-4x" aria-hidden="true"></i>
+              <div class=" login-title-text">Login</div>
+           </div>
+
+           <div class="login-form">
+
+              <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+
+                <div class="inputGroup">
+                    <div>
+                        email
+                        <span class="error" *ngIf="email.hasError('required') && (email?.touched || email?.dirty)">
+                         *
+                        </span> 
+                    </div>
+                    <input #email="ngModel"   type="text" name="email" required email ngModel>
+                    <div class="error" *ngIf=" email.hasError('email') && (email?.touched || email?.dirty)">
+                        <small>please enter valid email address</small>
+                    </div>
+                </div>
+
+                <div class="inputGroup">
+                    <div>
+                        password
+                        <span class="error" *ngIf="password.hasError('required')   && (password?.touched || password?.dirty)">
+                         *
+                        </span> 
+                    </div>
+                    <input type="password" name="password" #password="ngModel" required  ngModel>
+                </div>
+
+                <div class="remember">
+                    
+                    <input type="checkbox">
+                    <span class="remember-text">Remember me</span>
+                </div>
+                <div class="forgot-pass">
+                    <a [routerLink]="['/auth/password-recovery']"> forgot password?</a> 
+                  </div>
+                <div class="btn-cont">
+                    <button class="btn login-btn" type="submit">Login</button>
+                </div>
+              </form>
+
+           </div>
+        </div>
+
+    </div>
+</div>
