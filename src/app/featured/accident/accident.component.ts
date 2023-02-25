@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CrudService } from 'src/app/core/services/crud.service';
 import { HelpersService } from 'src/app/core/services/helpers.service';
@@ -12,7 +12,7 @@ import { HelpersService } from 'src/app/core/services/helpers.service';
 export class AccidentComponent implements OnInit {
 
   id: number;
-  accidentForm: FormGroup;
+  accidentForm: UntypedFormGroup;
   formSubmitted: boolean = false;
   @Input() isModal:boolean = false;
   @Output() onCancelModal = new EventEmitter();
@@ -24,7 +24,7 @@ export class AccidentComponent implements OnInit {
   isSending:boolean = false;
   constructor(
 
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public crudService:CrudService,
     public helpersService:HelpersService,
     private activatedRoute: ActivatedRoute
@@ -75,8 +75,8 @@ export class AccidentComponent implements OnInit {
     // });
     this.crudService.loadDropDownData('lookup/region', 'region');
   }
-  get State(): FormControl {
-    return this.accidentForm.get('state') as FormControl;
+  get State(): UntypedFormControl {
+    return this.accidentForm.get('state') as UntypedFormControl;
   }
 
   onPortCreated(){

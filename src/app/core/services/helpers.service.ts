@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 import { CrudService } from './crud.service';
 
@@ -10,7 +10,7 @@ import { CrudService } from './crud.service';
 export class HelpersService {
    
   constructor(private crudService:CrudService) { }
-  scrollToTheError(formGroup: FormGroup){
+  scrollToTheError(formGroup: UntypedFormGroup){
     for(let control in formGroup.controls){
       if(formGroup.controls[control].errors){
         document.querySelector(`#${control}`).scrollIntoView();

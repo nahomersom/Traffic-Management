@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from '../../services/crud.service';
 import { HelpersService } from '../../services/helpers.service';
@@ -11,13 +11,13 @@ import { HelpersService } from '../../services/helpers.service';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  ResetPasswordFormGroup:FormGroup;
+  ResetPasswordFormGroup:UntypedFormGroup;
   formSubmitted:boolean = false;
   token:string;
   email:string;
   ConfrmpasswordError:boolean = false;
   @ViewChild("ConfirmPassword") ConfirmPassword: ElementRef;
-  constructor(private fb:FormBuilder,private crudService:CrudService,private helpersService:HelpersService, private router:Router,private activatedRoute:ActivatedRoute) {
+  constructor(private fb:UntypedFormBuilder,private crudService:CrudService,private helpersService:HelpersService, private router:Router,private activatedRoute:ActivatedRoute) {
     this.token=this.activatedRoute.snapshot.queryParams['token'];
     this.email=this.activatedRoute.snapshot.queryParams['email'];
     

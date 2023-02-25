@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../../services/crud.service';
 import { HelpersService } from '../../services/helpers.service';
@@ -11,9 +11,9 @@ import { HelpersService } from '../../services/helpers.service';
 })
 export class PasswordRecoveryComponent implements OnInit {
 
-  passwordRecoveryFormGroup:FormGroup;
+  passwordRecoveryFormGroup:UntypedFormGroup;
   formSubmitted:boolean = false;
-  constructor(private fb:FormBuilder,private crudService:CrudService,private helpersService:HelpersService, private router:Router) {
+  constructor(private fb:UntypedFormBuilder,private crudService:CrudService,private helpersService:HelpersService, private router:Router) {
 
     this.passwordRecoveryFormGroup = fb.group({
       Email:['', [Validators.required]],
